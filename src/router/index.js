@@ -35,6 +35,7 @@ const Router = () => {
       <Routes>
         {/* ROUTE DEL MAIN (PUBLICAS) */}
         <Route path="login" element={<Login />} />
+        <Route path="signUp" element={<SignUp />} />
         <Route element={<Main />}>
           <Route path="/" element={<Pokemon />} />
           <Route path="/flags" element={<Flags />} />
