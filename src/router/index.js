@@ -23,6 +23,8 @@ import Home from "../pages/Home";
 import Main from "../layouts/Main";
 import Private from "../layouts/Private";
 import Ecommerce from "../layouts/Ecommerce";
+import Map from "../pages/Map";
+import SignUp from "../pages/SignUp";
 
 // Nuestro Router va a ser un componente el cual se encargue de retornar
 // las rutas con su respectiva vista
@@ -38,6 +40,7 @@ const Router = () => {
           <Route path="/flags" element={<Flags />} />
           <Route path="/flag/detail/:name" element={<Detail />} />
           <Route path="/youtube" element={<Youtube />} />
+          <Route path="/maps" element={<Map />} />
         </Route>
         {/* ROUTE para ecommerce */}
         <Route element={<Ecommerce />}>
