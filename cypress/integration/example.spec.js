@@ -37,23 +37,23 @@ describe("Mi primera prueba con cypress", () => {
 
     // })
 
-    it("Pruebas para login", () => {
-        cy.visit("https://codigo-13-react.vercel.app/login");
-        cy.get('[name="email"]').type("pepe@gmail.com");
-        cy.get('[name="password"]').type("123456");
-        cy.contains("Iniciar Session").click();
-        cy.url().should("include", "/youtube/administrador");
+    // it("Pruebas para login", () => {
+    //     cy.visit("https://codigo-13-react.vercel.app/login");
+    //     cy.get('[name="email"]').type("pepe@gmail.com");
+    //     cy.get('[name="password"]').type("123456");
+    //     cy.contains("Iniciar Session").click();
+    //     cy.url().should("include", "/youtube/administrador");
 
-        cy.contains("Crear Pelicula").click();
-        cy.get('[name="name"]').type("Doctor Strange 2");
-        cy.get('[name="director"]').type("Scott Derrickson");
-        cy.get('[name="gender"]').type("Marvel");
-        cy.get('[name="video_link"]').type("https://i.ytimg.com/an_webp/nugHqU8jurA/mqdefault_6s.webp?du=3000&sqp=CIC9rpIG&rs=AOn4CLAFv6MqXJ_feCOXWKlUXzC4ulG9Jw");
-        cy.get('[name="wallpaper"]').type("https://i.ytimg.com/an_webp/nugHqU8jurA/mqdefault_6s.webp?du=3000&sqp=CIC9rpI");
+    //     cy.contains("Crear Pelicula").click();
+    //     cy.get('[name="name"]').type("Doctor Strange 2");
+    //     cy.get('[name="director"]').type("Scott Derrickson");
+    //     cy.get('[name="gender"]').type("Marvel");
+    //     cy.get('[name="video_link"]').type("https://i.ytimg.com/an_webp/nugHqU8jurA/mqdefault_6s.webp?du=3000&sqp=CIC9rpIG&rs=AOn4CLAFv6MqXJ_feCOXWKlUXzC4ulG9Jw");
+    //     cy.get('[name="wallpaper"]').type("https://i.ytimg.com/an_webp/nugHqU8jurA/mqdefault_6s.webp?du=3000&sqp=CIC9rpI");
 
-        cy.get(".btn-crear-movie").click();
+    //     cy.get(".btn-crear-movie").click();
 
-    })
+    // })
 });
 
 
