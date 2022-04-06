@@ -9,16 +9,16 @@
 describe("Mi primera prueba con cypress", () => {
     // dentro de nuestro arrow function vamos a escribir las pruebas
     // que haremos ejemplo
-    it("prueba home pokemon", () => {
-            // aca vamos a verificar si es que nuestro home funciona o no
-            //cy => cypress
-            // Esto va a entrar a localhost:3000 y decirno si funciona o no
-            cy.visit("https://codigo-13-react.vercel.app/");
-            cy.contains("Pokedex");
-            cy.contains("Detalle del pokemon").click();
-            cy.contains("Habilidades").click();
-            cy.contains("Cerrar").click();
-        });
+    // it("prueba home pokemon", () => {
+    //         // aca vamos a verificar si es que nuestro home funciona o no
+    //         //cy => cypress
+    //         // Esto va a entrar a localhost:3000 y decirno si funciona o no
+    //         cy.visit("https://codigo-13-react.vercel.app/");
+    //         cy.contains("Pokedex");
+    //         cy.contains("Detalle del pokemon").click();
+    //         cy.contains("Habilidades").click();
+    //         cy.contains("Cerrar").click();
+    //     });
 
         it("Pruebas para banderas", () => {
             cy.visit("https://codigo-13-react.vercel.app/flags");
@@ -30,12 +30,12 @@ describe("Mi primera prueba con cypress", () => {
 
         })
 
-        it("Pruebas para Youtube", () => {
-            cy.visit("https://codigo-13-react.vercel.app/youtube");
-            cy.wait(5000)
-            cy.contains("Batman").click();
+        // it("Pruebas para Youtube", () => {
+        //     cy.visit("https://codigo-13-react.vercel.app/youtube");
+        //     cy.wait(5000)
+        //     cy.contains("Batman").click();
 
-        })
+        // })
 
         it("Pruebas para login", () => {
             cy.visit("https://codigo-13-react.vercel.app/login");
