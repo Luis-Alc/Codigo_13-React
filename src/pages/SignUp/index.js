@@ -33,63 +33,18 @@ import { LocalizationProvider, DatePicker } from "@mui/lab";
 const SignUp = () => {
     const [dateSelect, setDateSelect] = useState(null);
 
-    const [validateInputsEmpty, setValidateInputsEmpty] = useState({
-        name: false,
-        last_name: false,
-        email: false,
-        phone_number: false,
-        password: false,
-        address: false,
-        city: false,
-        date_born: false,
-        document_number: false,
-        gender: false,
-    });
-
-    // vamos a crear una variable que se encargue de manejar si es que el boton
-    // esta en disabled o no
-    const [buttonDisabled, setButtonDisabled] = useState(false);
-
-    // vamos a crear una funcion llamada validate la cual se va a encargar
-    // de poder almacenar los errores que tengas en nuestro formulario
-    // nota: validate va a recibir como parametros los valores de nuestros inpus
     const validate = (values) => {
-        // aca estaran nuestros errores
-        // podemos validar que todos los campos sean requerido
-        // para hacerlo pro podriamos usar los key de nuestro inputs y ver que si algunos
-        // este vacio lance un error de que todos los campos son requeridos
-        // Esto extrae los keys del objeto y los guarda en un array
-        const errors = {};
-        delete values.marital_status;
-        delete values.date_born;
-        delete values.gender;
+        // aca estara nuestros errores
+        // podemos validar que todos los campor sean requeridos
+        // para hacer pro podriamos usar los key de nuestros input y ver que si algunos 
+        // este vacio lance un error de todos lo campos requeridos
+
         Object.keys(values).forEach((value) => {
-            //aca estamos comparado si es el uno de los items del objeto esta vacio
-            // si este vacio entonces muestra en la consola dicho campo
-            // if (values[value] === "") {
-            // aca a va imprimir los nombre de los inputs que estan vacios
-            //  aca deberamos usar la funcion setValidateInputsEmpty
-            //   errors[value] = true;
-            // } else {
-            //   errors[value] = false;
-            // }
-            errors[value] = values[value] === "" ? true : false;
-        });
-        // basicamente si todos los campos de error son false entonces
-        // asumimismo que todo esta lleno
-
-        // Object.values(errors) Es un array que tiene los valores
-        // if (Object.values(errors).includes(true)) {
-        //   setButtonDisabled(true);
-        // } else {
-        //   setButtonDisabled(false);
-        // }
-        // recordemos que includes retorna true o false
-        // si encuenstra al elemento es true si no false
-        setButtonDisabled(Object.values(errors).includes(true));
-        setValidateInputsEmpty(errors);
-    };
-
+            if (values[value]==="") {
+                console.log(value, "aa" + values[value]);
+            }
+        })
+    }
     // vamos a crear una funcion usando formik
     const formik = useFormik({
         // dentro de formik vamos a definir los valores iniciales de nuestro
@@ -108,10 +63,6 @@ const SignUp = () => {
             marital_status: "",
             languages: [],
         },
-        // para poder usar validate dentro de formik necesitamos llamar a la funcion
-        // validate antes del onSubmit
-        // validate que ahora es una funcion de formik por ende el valir default
-        // que tendra como parametros son los values
         validate,
         onSubmit: (values) => {
             console.log(values);
@@ -126,14 +77,11 @@ const SignUp = () => {
                     <Grid item md={12} xs={12}>
                         <h2>Crear cuenta</h2>
                     </Grid>
-                    {/* NOTA: Lo inputs de material tienen una propiedad para mostrar errores */}
-                    {/* llamada error si error es true entonces el input se marca de rojo si no, no pasada */}
                     <Grid item md={6} xs={12}>
                         <TextField
                             label="Nombre"
                             name="name"
                             fullWidth
-                            error={validateInputsEmpty.name}
                             onChange={formik.handleChange}
                         />
                     </Grid>
@@ -142,7 +90,6 @@ const SignUp = () => {
                             label="Apellido"
                             name="last_name"
                             fullWidth
-                            error={validateInputsEmpty.last_name}
                             onChange={formik.handleChange}
                         />
                     </Grid>
@@ -150,7 +97,6 @@ const SignUp = () => {
                         <TextField
                             label="Correo"
                             name="email"
-                            error={validateInputsEmpty.email}
                             type="email"
                             fullWidth
                             onChange={formik.handleChange}
@@ -160,7 +106,6 @@ const SignUp = () => {
                         <TextField
                             label="Telefono"
                             name="phone_number"
-                            error={validateInputsEmpty.phone_number}
                             type="number"
                             onChange={formik.handleChange}
                             fullWidth
@@ -170,7 +115,6 @@ const SignUp = () => {
                         <TextField
                             label="Password"
                             name="password"
-                            error={validateInputsEmpty.password}
                             type="password"
                             onChange={formik.handleChange}
                             fullWidth
@@ -180,7 +124,6 @@ const SignUp = () => {
                         <TextField
                             label="Direccion"
                             name="address"
-                            error={validateInputsEmpty.address}
                             fullWidth
                             onChange={formik.handleChange}
                         />
@@ -189,7 +132,6 @@ const SignUp = () => {
                         <TextField
                             label="Ciudad"
                             name="city"
-                            error={validateInputsEmpty.city}
                             fullWidth
                             onChange={formik.handleChange}
                         />
@@ -210,13 +152,7 @@ const SignUp = () => {
                                     // 2 el valor de campo (date)
                                     formik.setFieldValue("date_born", date);
                                 }}
-                                renderInput={(params) => (
-                                    <TextField
-                                        fullWidth
-                                        error={validateInputsEmpty.date_born}
-                                        {...params}
-                                    />
-                                )}
+                                renderInput={(params) => <TextField fullWidth {...params} />}
                             />
                         </LocalizationProvider>
                     </Grid>
@@ -225,7 +161,6 @@ const SignUp = () => {
                             label="DNI/Pasaport/CE"
                             name="document_number"
                             type="number"
-                            error={validateInputsEmpty.document_number}
                             onChange={formik.handleChange}
                             fullWidth
                         />
@@ -311,13 +246,7 @@ const SignUp = () => {
                         </FormGroup>
                     </Grid>
                     <Grid item md={12} xs={12}>
-                        <Button
-                            type="submit"
-                            disabled={buttonDisabled}
-                            variant="contained"
-                            fullWidth
-                            size="large"
-                        >
+                        <Button type="submit" variant="contained" fullWidth size="large">
                             Crear cuenta
                         </Button>
                     </Grid>
@@ -329,30 +258,7 @@ const SignUp = () => {
 
 export default SignUp;
 
-// entienden que values es el objeto que tiene los valores delo inputs
-// const values = {
-//   name: "pepe",
-//   last_name: "",
-//   email: "",
-//   phone_number: "",
-//   password: "",
-//   address: "",
-// };
-
-// ahora al hacer un Objet.key(values)
-// estamos extrayendo los key guardandalo en un array
-// Object.keys(values);
-// [name, last_name, email, phone_number, password, address];
-
-// ahora para poder extraer lo que es un elemente del objeto hay 2 formas
-// values.name = pepe
-// values[name] = pepe
-
-// Si le hacemos un forEach a Object.keys(values);
-// Object.keys(values).forEach((value) => {
-//   console.log(value);
-//   console.log(values[value]);
-//   if (values[value] === "") {
-//     console.log("Este valor " + value + " esta vacio");
-//   }
-// });
+const values = {
+    name:"",
+    
+}
