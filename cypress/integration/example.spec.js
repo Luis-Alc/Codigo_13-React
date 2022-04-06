@@ -13,7 +13,7 @@ describe("Mi primera prueba con cypress", () => {
         // aca vamos a verificar si es que nuestro home funciona o no
         //cy => cypress
         // Esto va a entrar a localhost:3000 y decirno si funciona o no
-        cy.visit("http://localhost:3000/");
+        cy.visit("https://codigo-13-react.vercel.app/");
         cy.contains("Pokedex");
         cy.contains("Detalle del pokemon").click();
         cy.contains("Habilidades").click();
@@ -21,7 +21,7 @@ describe("Mi primera prueba con cypress", () => {
     });
 
     // it("Pruebas para banderas", () => {
-    //     cy.visit("http://localhost:3000/flags");
+    //     cy.visit("https://codigo-13-react.vercel.app/flags");
     //     cy.wait(5000)
     //     cy.get("input:first").type("peru");
     //     cy.wait(5000)
@@ -31,14 +31,14 @@ describe("Mi primera prueba con cypress", () => {
     // })
 
     // it("Pruebas para Youtube", () => {
-    //     cy.visit("http://localhost:3000/youtube");
+    //     cy.visit("https://codigo-13-react.vercel.app/youtube");
     //     cy.wait(5000)
     //     cy.contains("Batman").click();
 
     // })
 
     it("Pruebas para login", () => {
-        cy.visit("http://localhost:3000/login");
+        cy.visit("https://codigo-13-react.vercel.app/login");
         cy.get('[name="email"]').type("pepe@gmail.com");
         cy.get('[name="password"]').type("123456");
         cy.contains("Iniciar Session").click();
